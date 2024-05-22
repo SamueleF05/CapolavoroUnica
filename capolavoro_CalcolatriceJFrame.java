@@ -45,27 +45,27 @@ public class capolavoro_CalcolatriceJFrame extends javax.swing.JFrame {
             case 1 -> {
                 //somma
                 ans = num + Double.parseDouble(textField1.getText());//string to double
-                textField1.setText(Double.toString(round(ans, textField1.getText().length())));
+                jTextField.setText(Double.toString(round(ans, textField1.getText().length())));
             }
             case 2 -> {
                 //sottrazione
                 ans = num - Double.parseDouble(textField1.getText());//string to double
-                textField1.setText(Double.toString(ans));
+                jTextField.setText(Double.toString(ans));
             }
             case 3 -> {
                 //moltiplicazione
                 ans = num * Double.parseDouble(textField1.getText());//string to double
-                textField1.setText(Double.toString(ans));
+                jTextField.setText(Double.toString(ans));
             }
             case 4 -> {
                 //divisione
                 ans = num / Double.parseDouble(textField1.getText());//string to double
-                textField1.setText(Double.toString(ans));
+                jTextField.setText(Double.toString(ans));
             }
             case 5 -> {
                 //potenza 
                 ans = java.lang.Math.pow(num,Double.parseDouble(textField1.getText()));
-                textField1.setText(Double.toString(ans));
+                jTextField.setText(Double.toString(ans));
             }
         }
     }
@@ -84,6 +84,7 @@ public class capolavoro_CalcolatriceJFrame extends javax.swing.JFrame {
     @Override
     public void disable(){
         textField1.setText("");
+        if(! jTextField.getText().equals("Result Pefforza")) jTextField.setText("");
         textField1.setEnabled(false);
         
         TurnON.setEnabled(true);
@@ -109,6 +110,7 @@ public class capolavoro_CalcolatriceJFrame extends javax.swing.JFrame {
         ButtonPLUS.setEnabled(false);
         ButtonCANC.setEnabled(false);
         ButtonPower.setEnabled(false);
+        jTextField.setEnabled(false);
     }
     //turnOn
     @Override
@@ -139,6 +141,7 @@ public class capolavoro_CalcolatriceJFrame extends javax.swing.JFrame {
         ButtonPLUS.setEnabled(true);
         ButtonCANC.setEnabled(true);
         ButtonPower.setEnabled(true);
+        jTextField.setEnabled(true);
         
     }
     
@@ -183,7 +186,7 @@ public class capolavoro_CalcolatriceJFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Calcolatrice");
-        setLocation(new java.awt.Point(700, 250));
+        setLocation(new java.awt.Point(700, 200));
         setResizable(false);
 
         buttonGroup1.add(TurnON);
@@ -388,9 +391,11 @@ public class capolavoro_CalcolatriceJFrame extends javax.swing.JFrame {
             }
         });
 
+        textField1.setEditable(false);
         textField1.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
         textField1.setForeground(new java.awt.Color(0, 0, 0));
         textField1.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        textField1.setActionCommand("<Not Set>");
         textField1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         textField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -398,11 +403,17 @@ public class capolavoro_CalcolatriceJFrame extends javax.swing.JFrame {
             }
         });
 
+        jTextField.setEditable(false);
         jTextField.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
         jTextField.setForeground(new java.awt.Color(0, 0, 0));
         jTextField.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-        jTextField.setText("Result ");
+        jTextField.setText("Result Pefforza");
         jTextField.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -481,7 +492,7 @@ public class capolavoro_CalcolatriceJFrame extends javax.swing.JFrame {
                         .addComponent(TurnON)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(TurnOFF)
-                        .addGap(0, 12, Short.MAX_VALUE))
+                        .addGap(0, 30, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(1, 1, 1)
                         .addComponent(jTextField)))
@@ -669,6 +680,10 @@ public class capolavoro_CalcolatriceJFrame extends javax.swing.JFrame {
     private void textField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_textField1ActionPerformed
+
+    private void jTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldActionPerformed
 
     /**
      * @param args the command line arguments
